@@ -40,3 +40,10 @@ test/.coverage
 test/data/legacy_serialized.pt
 *~
 .idea
+.aim
+_*.ipynb
+slurm
+.ddp
+*.out
+tmp/output
+models/**/**/*.pth

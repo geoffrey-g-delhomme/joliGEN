@@ -1,6 +1,9 @@
-torch==2.1 -f https://download.pytorch.org/whl/cu117/torch_stable.html
-torchvision==0.16
-numpy==1.23.1
+# torch==2.1 -f https://download.pytorch.org/whl/cu116/torch_stable.html
+# torch
+# torchvision==0.16
+# torchvision
+# numpy==1.23.1
+numpy
 Pillow
 timm
 visdom
@@ -23,3 +26,7 @@ piq
 git+https://github.com/ChaoningZhang/MobileSAM.git
 Ninja
 lpips
+
+notebook
+pandas
+papermill

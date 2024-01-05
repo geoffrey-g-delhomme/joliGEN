@@ -706,7 +706,7 @@ class BaseModel(ABC):
                     self,
                     "net" + name,
                     torch.nn.parallel.DistributedDataParallel(
-                        net, device_ids=[self.gpu_ids[rank]], broadcast_buffers=False
+                        net, device_ids=[self.gpu_ids[rank]], broadcast_buffers=False,
                     ),
                 )
 

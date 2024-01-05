@@ -858,6 +858,7 @@ class CommonOptions(BaseOptions):
                     + str(opt.data_crop_size)
                     + ", run may fail, use --G_netE accordingly"
                 )
+                print(msg)
                 warnings.warn(msg)
 
         # specific after parse

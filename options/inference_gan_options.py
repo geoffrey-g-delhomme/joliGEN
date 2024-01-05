@@ -27,6 +27,7 @@ class InferenceGANOptions(BaseOptions):
             action="store_true",
             help="Concatenate the true image and the transformed image",
         )
+        parser.add_argument("--name", type=str, default="run", help="run name")
 
         self.isTrain = False
         return parser

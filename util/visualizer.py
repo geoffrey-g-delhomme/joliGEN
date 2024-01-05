@@ -91,10 +91,10 @@ class Visualizer:
 
             self.aim_run = aim.Run(
                 experiment=opt.name,
-                repo="aim://"
-                + self.opt.output_display_aim_server
-                + ":"
-                + str(self.opt.output_display_aim_port),
+                # repo="aim://"
+                # + self.opt.output_display_aim_server
+                # + ":"
+                # + str(self.opt.output_display_aim_port),
             )
 
         if (

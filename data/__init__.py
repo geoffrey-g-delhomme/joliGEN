@@ -151,6 +151,8 @@ class IterableCustomDatasetDataLoader:
             sampler=sampler,
             num_workers=int(opt.data_num_threads),
             collate_fn=collate_fn,
+            persistent_workers=True,
+            pin_memory=True
         )
 
     def load_data(self):

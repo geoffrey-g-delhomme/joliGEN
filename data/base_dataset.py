@@ -355,6 +355,14 @@ def get_params(opt, size):
     return {"crop_pos": (x, y), "flip": flip}
 
 
+def transform_crop(params, opt, margin, img):
+    return __crop(img, params["crop_pos"], opt.data_crop_size + margin)
+
+def transform_scale_width(opt, method, img):
+    return __scale_width(img, opt.data_load_size, method)
+
+from functools import partial
+
 def get_transform(
     opt,
     params=None,
@@ -374,21 +382,27 @@ def get_transform(
     elif "scale_width" in opt.data_preprocess:
         transform_list.append(
             transforms.Lambda(
-                lambda img: __scale_width(img, opt.data_load_size, method)
+                # lambda img: __scale_width(img, opt.data_load_size, method)
+                partial(transform_scale_width, (opt, method))
             )
+        )
+    elif "scale_min_width" in opt.data_preprocess:
+        transform_list.append(
+            transforms.Resize(opt.data_load_size, interpolation=method)
         )
 
     if "crop" in opt.data_preprocess and crop:
         if params is None:
             transform_list.append(transforms.RandomCrop(opt.data_crop_size + margin))
         else:
-            transform_list.append(
-                transforms.Lambda(
-                    lambda img: __crop(
-                        img, params["crop_pos"], opt.data_crop_size + margin
-                    )
-                )
-            )
+            # transform_list.append(
+            #     transforms.Lambda(
+            #         lambda img: __crop(
+            #             img, params["crop_pos"], opt.data_crop_size + margin
+            #         )
+            #     )
+            # )
+            transform_list.append(transforms.Lambda(partial(transform_crop, (params, opt, margin))))
 
     if opt.data_preprocess == "none":
         transform_list.append(

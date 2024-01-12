@@ -43,6 +43,10 @@ from util.visualizer import Visualizer
 from util.lion_pytorch import Lion
 from util.script import get_override_options_names
 
+import cv2
+
+cv2.setNumThreads(0)
+
 
 def setup(rank, world_size, port):
     os.environ["MASTER_ADDR"] = "localhost"
